@@ -12,3 +12,4 @@ jobs:
         id: get_version
         run: echo "number-part=${GITHUB_REF#refs/tags/stg/v}" >> $GITHUB_OUTPUT
 #one step
+#two step
