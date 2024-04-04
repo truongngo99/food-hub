@@ -13,10 +13,18 @@ jobs:
       - name: Get Version
         id: get_version
         run: echo "number-part=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
-      - name: Display
-        run: echo ${{ steps.get_version.outputs.number-part }}
+      - name: Change version code
+        run: script/change_version.sh ${{ steps.get_version.outputs.number-part }}
       - name: Dispaly git count
-        run: 
-          git rev-list @ --count   
+        run: cat versionApp.properties
+      - name: KFLasdf
+        run: |
+          echo "number-part=${GITHUB_REF#refs/tags/v}"
+          echo "versionName=${number-part}" > versionApp.properties
+          echo "numberCode=$(git rev-list @ --count)"
+          echo "versionCOde=${numberCode}" > versionApp.properties
+      - name: Dispaly git count
+        run: cat versionApp.properties
+
 #one step
 #two step
