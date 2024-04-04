@@ -17,14 +17,6 @@ jobs:
         run: script/change_version.sh ${{ steps.get_version.outputs.number-part }}
       - name: Dispaly git count
         run: cat versionApp.properties
-      - name: KFLasdf
-        run: |
-          echo "number-part=${GITHUB_REF#refs/tags/v}"
-          echo "versionName=${number-part}" > versionApp.properties
-          echo "numberCode=$(git rev-list @ --count)"
-          echo "versionCOde=${numberCode}" > versionApp.properties
-      - name: Dispaly git count
-        run: cat versionApp.properties
 
 #one step
 #two step
