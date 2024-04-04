@@ -6,10 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
       - name: Get Version
         id: get_version
         run: echo "number-part=${GITHUB_REF#refs/tags/stg/v}" >> $GITHUB_OUTPUT
+      - name: Display
+        run: echo ${{ steps.get_version.outputs.number-part }}
 #one step
 #two step
