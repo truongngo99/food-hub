@@ -5,14 +5,9 @@ jobs:
     name: Slack Notification
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Slack Notification
-      uses: rtCamp/action-slack-notify@v2
-      env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK }}
-        SLACK_COLOR: "danger"
-        SLACK_MESSAGE: "<!channel>\nEnv: STG\nMsg: apkのアップロードに失敗しました:cry:"
-        SLACK_USERNAME: "Isana Bot"
-        SLACK_ICON: ""
-
-        
+      - uses: actions/checkout@v4
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+      - name: Get Version
+        id: get_version
+        run: echo "number-part=${GITHUB_REF#refs/tags/stg/v}" >> $GITHUB_OUTPUT
