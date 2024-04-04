@@ -3,7 +3,7 @@ name: Staging
 on:
   push:
     tags:
-      - stg/v*
+      - /v*
 jobs:
   slackNotification:
     name: Slack Notification
@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Get Version
         id: get_version
-        run: echo "number-part=${GITHUB_REF#refs/tags/stg/v}" >> $GITHUB_OUTPUT
+        run: echo "number-part=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
       - name: Display
         run: echo ${{ steps.get_version.outputs.number-part }}
       - name: Dispaly git count
