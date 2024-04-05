@@ -1,9 +1,9 @@
 
-name: Staging
+name: Product
 on:
   push:
     tags:
-      - stg/v*
+      - v*
 jobs:
   slackNotification:
     name: Slack Notification
@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 0
       - name: Get Version
         id: get_version
-        run: echo "number-part=${GITHUB_REF#refs/tags/stg/v}" >> $GITHUB_OUTPUT
+        run: echo "number-part=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
       - name: Change version code
         run: script/change_version.sh ${{ steps.get_version.outputs.number-part }}
       - name: Dispaly git count
